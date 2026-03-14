@@ -29,12 +29,20 @@ for i in range(1000):
   num = i % 2 + 1
 
   start = time.time()
-  eval(f'child.info{num}()')
+
+  if num == 0:
+    child.info1();
+  else:
+    child.info2();
+
   end = time.time()
   
   elapsed = end - start
 
-  exec(f'info{num}time += {elapsed}')
+  if num == 0:
+    info1time += elapsed
+  else:
+    info2time += elapsed
 
-print(f'Average info1() time: {info1time / 500:.6f} seconds')
-print(f'Average info2() time: {info2time / 500:.6f} seconds')
+print(f'Average info1() time: {info1time / 500:.9f} seconds')
+print(f'Average info2() time: {info2time / 500:.9f} seconds')
