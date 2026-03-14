@@ -103,6 +103,10 @@ print("Eigenvectors:\n", eigenvectors)
 # 0 & 2 \\
 # \end{bmatrix}
 # $$
+
+B = np.array([[3, 1],
+             [0, 2]])
+
 #
 # Do this by hand. Then, check your work using numpy. 
 #
@@ -115,21 +119,35 @@ print("Eigenvectors:\n", eigenvectors)
 # ## Answer 1
 # Eigenvalues = {2, 3}
 #
-# Eigenvectors = 
-# $$ v =
+# Substitute in eigenvalues
+# $$ v_1 =
 # \begin{bmatrix}
 # 1 & 1 \\
 # 0 & 0 \\
 # \end{bmatrix}
 #
+# v_2 =
 # \begin{bmatrix}
 # 0 & 1 \\
 # 0 & -1 \\
 # \end{bmatrix}
 # $$
 
+# 0 = x + y
+# x = -y
+# y = 1; x = -1
+
+## Eigenvectors:
+
+
+
 # %%
 # Check your work:
+
+eigenvalues, eigenvectors = np.linalg.eig(B)
+
+print(f'Eigenvalues: {eigenvalues}')
+print(f'Eigenvectors: {eigenvectors}')
 
 # %% [markdown]
 # ## Question 2
@@ -153,11 +171,20 @@ print("Eigenvectors:\n", eigenvectors)
 # %%
 # a: use NumPy to compute
 
+C = np.array([[2, 1],
+              [1, 2]])
+
+eigenvalues, eigenvectors = np.linalg.eig(C)
+
 # %% [markdown]
 # b:
 
+print(f'Eigenvectors: {eigenvectors}')
+
 # %%
 # c: check that matrix * eigenvector = eigenvalue * eigenvector
+
+print(C @ eigenvectors[0] == eigenvalues[0] * eigenvectors[0])
 
 # %% [markdown]
 # ## Vector Norms
